@@ -18,13 +18,12 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     private final List<Recipe> mRecipes;
     private ItemClickListener mListener;
     private LayoutInflater mInflater;
-    private Context mContext;
 
     RecipeListAdapter(Context context, ItemClickListener listener, ArrayList<Recipe> recipes) {
         this.mRecipes = recipes;
         this.mListener = listener;
-        this.mContext = context;
-        this.mInflater = LayoutInflater.from(mContext);
+
+        this.mInflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -51,8 +50,8 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
 
     class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView recipeTitle;
-        TextView servingSize;
+        private TextView recipeTitle;
+        private TextView servingSize;
 
         RecipeViewHolder(View itemView) {
             super(itemView);

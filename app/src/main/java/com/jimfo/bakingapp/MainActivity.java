@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.jimfo.bakingapp.model.Recipe;
 
@@ -14,11 +13,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements RecipeTask.PostExecuteListener,
         RecipeListAdapter.ItemClickListener {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-
     private ArrayList<Recipe> mRecipes;
     public RecipeListAdapter mAdapter;
-    RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

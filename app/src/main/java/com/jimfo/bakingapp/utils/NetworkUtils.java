@@ -3,19 +3,10 @@ package com.jimfo.bakingapp.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.jimfo.bakingapp.R;
-import com.jimfo.bakingapp.model.Ingredient;
 import com.jimfo.bakingapp.model.Recipe;
-import com.jimfo.bakingapp.model.Step;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,7 +17,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.List;
 
 public class NetworkUtils {
 
@@ -50,7 +40,6 @@ public class NetworkUtils {
 
         return ParsingJsonUtils.extractRecipeData(context, jsonResponse);
     }
-
 
 
     /**

@@ -41,10 +41,6 @@ public class ParsingJsonUtils {
         ArrayList<Ingredient> ingredients;
         ArrayList<Step> steps;
         String servings;
-        String image;
-
-
-
 
         // Try to parse the JSON_RESPONSE. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
