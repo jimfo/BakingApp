@@ -3,23 +3,30 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="@dimen/standard_padding"
     android:orientation="vertical"
     tools:context=".RecipeActivity">
 
-    <Button
-        android:id="@+id/ingredient_btn"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onButtonClick"
-        android:text="@string/ingredientLabel"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/ingredient_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        <Button
+            android:id="@+id/ingredient_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onButtonClick"
+            android:text="@string/ingredientLabel"/>
+
+        <TextView
+            android:id="@+id/ingredient_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/step_list"

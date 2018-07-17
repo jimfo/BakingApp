@@ -1,27 +1,34 @@
 package com.jimfo.bakingapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.jimfo.bakingapp.model.Ingredient;
 import com.jimfo.bakingapp.model.Recipe;
+import com.jimfo.bakingapp.model.Step;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeActivity extends AppCompatActivity {
+public class RecipeActivity extends AppCompatActivity implements RecipeDetailAdapter.ItemClickListener {
 
     private Recipe recipe;
     private TextView ingredientTv;
+    private RecyclerView mRecyclerView;
+    private RecipeDetailAdapter mAdapter;
+    private ArrayList<Step> mSteps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
 
+        mRecyclerView = findViewById(R.id.step_list);
         ingredientTv = findViewById(R.id.ingredient_tv);
 
         Intent i = getIntent();
@@ -33,6 +40,10 @@ public class RecipeActivity extends AppCompatActivity {
 
         if(recipe != null) {
             setTitle(recipe.getmName());
+            mSteps = new ArrayList<>(recipe.getmSteps());
+            mAdapter = new RecipeDetailAdapter(this, this, mSteps);
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            mRecyclerView.setAdapter(mAdapter);
             populateIngredientTv(recipe.getmIngredients());
         }
     }
@@ -66,5 +77,11 @@ public class RecipeActivity extends AppCompatActivity {
              default:
                  break;
         }
+    }
+
+    @Override
+    public void onItemClickListener(int itemId) {
+        Step step = mSteps.get(itemId);
+
     }
 }

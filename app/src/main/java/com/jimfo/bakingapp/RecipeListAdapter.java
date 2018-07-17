@@ -22,10 +22,10 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     RecipeListAdapter(Context context, ItemClickListener listener, ArrayList<Recipe> recipes) {
         this.mRecipes = recipes;
         this.mListener = listener;
-
         this.mInflater = LayoutInflater.from(context);
     }
 
+    @NonNull
     @Override
     public RecipeListAdapter.RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
 
@@ -50,6 +50,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
 
     class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         private TextView recipeTitle;
         private TextView servingSize;
 
