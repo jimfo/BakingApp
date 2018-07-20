@@ -1,4 +1,4 @@
-package com.jimfo.bakingapp;
+package com.jimfo.bakingapp.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jimfo.bakingapp.R;
 import com.jimfo.bakingapp.model.Recipe;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     private ItemClickListener mListener;
     private LayoutInflater mInflater;
 
-    RecipeListAdapter(Context context, ItemClickListener listener, ArrayList<Recipe> recipes) {
+    public RecipeListAdapter(Context context, ItemClickListener listener, ArrayList<Recipe> recipes) {
         this.mRecipes = recipes;
         this.mListener = listener;
         this.mInflater = LayoutInflater.from(context);

@@ -3,6 +3,7 @@ package com.jimfo.bakingapp;
 import android.os.AsyncTask;
 
 import com.jimfo.bakingapp.model.Recipe;
+import com.jimfo.bakingapp.ui.MainActivity;
 import com.jimfo.bakingapp.utils.NetworkUtils;
 
 import java.lang.ref.WeakReference;
@@ -18,7 +19,7 @@ public class RecipeTask extends AsyncTask<String, Void, ArrayList<Recipe>> {
         void onPostExecute(ArrayList<Recipe> movies);
     }
 
-    RecipeTask(MainActivity activity, PostExecuteListener pel) {
+    public RecipeTask(MainActivity activity, PostExecuteListener pel) {
 
         myRef = new WeakReference<>(activity);
         this.mPostExecuteListener = pel;

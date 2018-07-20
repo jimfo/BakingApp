@@ -88,7 +88,7 @@ public class ParsingJsonUtils {
         String measure;
         String item;
 
-        JSONArray jsonArray = null;
+        JSONArray jsonArray;
 
         try {
             jsonArray = new JSONArray(response);
@@ -99,7 +99,7 @@ public class ParsingJsonUtils {
 
                 qty = jsonObject.optString(context.getString(R.string.quantity), context.getString(R.string.dna));
                 measure = jsonObject.optString(context.getString(R.string.measure), context.getString(R.string.dna));
-                item = jsonObject.optString(context.getString(R.string.ingredient), context.getString(R.string.dna));
+                item = capitaizeEachWord(jsonObject.optString(context.getString(R.string.ingredient), context.getString(R.string.dna)));
 
                 ingredient = new Ingredient(qty, measure, item);
                 ingredients.add(ingredient);
@@ -110,6 +110,19 @@ public class ParsingJsonUtils {
         }
 
         return ingredients;
+    }
+
+    private static String capitaizeEachWord(String str) {
+
+        String[] strArray = str.split(" ");
+        StringBuilder builder = new StringBuilder();
+
+        for (String s : strArray) {
+            String cap = s.substring(0, 1).toUpperCase() + s.substring(1);
+            builder.append(cap + " ");
+        }
+
+        return builder.toString();
     }
 
     private static ArrayList<Step> extractStepData(Context context, String response) {
@@ -123,7 +136,7 @@ public class ParsingJsonUtils {
         String videoUrl;
         String thumbnailUrl;
 
-        JSONArray jsonArray = null;
+        JSONArray jsonArray;
         try {
 
             jsonArray = new JSONArray(response);

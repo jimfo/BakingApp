@@ -1,11 +1,20 @@
-package com.jimfo.bakingapp;
+package com.jimfo.bakingapp.ui;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
+import com.jimfo.bakingapp.R;
+import com.jimfo.bakingapp.RecipeTask;
+import com.jimfo.bakingapp.adapter.RecipeListAdapter;
 import com.jimfo.bakingapp.model.Recipe;
 
 import java.util.ArrayList;
@@ -13,6 +22,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements RecipeTask.PostExecuteListener,
         RecipeListAdapter.ItemClickListener {
 
+
+    // Recipe icon By Shane David Kenna, IE
     private ArrayList<Recipe> mRecipes;
     public RecipeListAdapter mAdapter;
     private RecyclerView mRecyclerView;
@@ -22,6 +33,23 @@ public class MainActivity extends AppCompatActivity implements RecipeTask.PostEx
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ActionBar bar = getSupportActionBar();
+
+        View view = this.getWindow().getDecorView();
+        view.setBackgroundColor(getResources().getColor(R.color.activityBackground));
+
+        Window window = this.getWindow();
+        if (Build.VERSION.SDK_INT >= 21) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.activityBackground));
+
+            if (bar != null) {
+                bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.activityBackground)));
+            }
+        }
+
         mRecyclerView = findViewById(R.id.recipe_list);
         new RecipeTask(this, this).execute();
     }
@@ -30,10 +58,8 @@ public class MainActivity extends AppCompatActivity implements RecipeTask.PostEx
     public void onItemClickListener(int itemId) {
         Recipe recipe = mRecipes.get(itemId);
 
-        String selected = getResources().getString(R.string.selected);
-
-        Intent i = new Intent(this, RecipeActivity.class);
-        i.putExtra(selected, recipe);
+        Intent i = new Intent(this, RecipeDetail.class);
+        i.putExtra(getResources().getString(R.string.selected), recipe);
         startActivity(i);
 
     }
