@@ -90,11 +90,15 @@ public class RecipeDetail extends AppCompatActivity implements TabLayout.OnTabSe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
 
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
+
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -106,21 +110,12 @@ public class RecipeDetail extends AppCompatActivity implements TabLayout.OnTabSe
 
     @Override
     public void onTabUnselected(TabLayout.Tab tab) {
-
+        // Unused method
     }
 
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
-
+        // Unused method
     }
 
-    //    @Override
-    //    public void onItemClickListener(int itemId) {
-    //        Step step = mSteps.get(itemId);
-    //
-    //        Log.i("TAG 2 ", "INSIDE CLICK");
-    //        Intent i = new Intent(this, StepActivity.class);
-    //        i.putExtra(getResources().getString(R.string.stepKey), step);
-    //        startActivity(i);
-    //    }
 }

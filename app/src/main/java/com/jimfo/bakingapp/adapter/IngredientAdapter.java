@@ -46,7 +46,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
 
     class IngredientViewHolder extends RecyclerView.ViewHolder {
 
-        TextView ingredientItem;
+        private TextView ingredientItem;
 
         IngredientViewHolder(View itemView) {
             super(itemView);

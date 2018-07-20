@@ -16,7 +16,6 @@ public class DetailPagerAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private ArrayList<Ingredient> mIngredients;
     private ArrayList<Step> mSteps;
-    private Fragment fragment;
 
     public DetailPagerAdapter(FragmentManager fm, ArrayList<Ingredient> ingredients, ArrayList<Step> steps) {
         super(fm);
@@ -27,6 +26,8 @@ public class DetailPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+
+        Fragment fragment = null;
 
         switch (position) {
             case 0:

@@ -31,7 +31,4 @@
     <string name="stepKey">steps</string>
     <string name="ingredientLabel">Recipe Ingredients</string>
     <string name="recipeIntro">Recipe Introduction</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

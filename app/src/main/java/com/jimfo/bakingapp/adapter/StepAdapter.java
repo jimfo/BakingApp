@@ -60,7 +60,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
     }
 
     class StepViewHolder extends RecyclerView.ViewHolder {
-        TextView stepItem;
+        private TextView stepItem;
 
         StepViewHolder(View itemView) {
             super(itemView);
