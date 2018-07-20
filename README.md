@@ -4,6 +4,7 @@ Udacity Baking App Project
 ### Common Project Requirements
 
 CRITERIA
+
 App is written solely in the Java Programming Language
 
 App utilizes stable release versions of all libraries, Gradle, and Android Studio.
@@ -11,6 +12,7 @@ App utilizes stable release versions of all libraries, Gradle, and Android Studi
 ### General App Usage
 
 CRITERIA
+
 App should display recipes from provided network resource.
 
 App should allow navigation between individual recipes and recipe steps.
@@ -22,6 +24,7 @@ App conforms to common standards found in the Android Nanodegree General Project
 ### Components and Libraries
 
 CRITERIA
+
 Application uses Master Detail Flow to display recipe steps and navigation between them.
 
 Application uses Exoplayer to display videos.
@@ -37,6 +40,7 @@ Application sensibly utilizes a third-party library to enhance the app's feature
 ### Homescreen Widget
 
 CRITERIA
+
 Application has a companion homescreen widget.
 
 Widget displays ingredient list for desired recipe.
