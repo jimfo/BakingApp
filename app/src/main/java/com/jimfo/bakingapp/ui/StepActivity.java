@@ -88,7 +88,7 @@ public class StepActivity extends AppCompatActivity implements ExoPlayer.EventLi
                 bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.activityBackground)));
             }
         }
-        
+
         mPlayerView.setDefaultArtwork(BitmapFactory.decodeResource
                 (getResources(), R.drawable.no_video));
 
