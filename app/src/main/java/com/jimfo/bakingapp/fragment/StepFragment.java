@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +22,14 @@ import java.util.ArrayList;
 public class StepFragment extends Fragment implements StepAdapter.ItemClickListener {
 
     private ArrayList<Step> mSteps = new ArrayList<>();
-
+    private String mTitle;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            mSteps = getArguments().getParcelableArrayList(getResources().getString(R.string.stepKey));
+            mSteps = getArguments().getParcelableArrayList("steps");
+            mTitle = getArguments().getString("title");
         }
     }
 
@@ -46,11 +46,12 @@ public class StepFragment extends Fragment implements StepAdapter.ItemClickListe
         return view;
     }
 
-    public StepFragment newInstance(ArrayList<Step> steps) {
+    public StepFragment newInstance(ArrayList<Step> steps, String title) {
 
         StepFragment fragment = new StepFragment();
         Bundle args = new Bundle();
         args.putParcelableArrayList("steps", steps);
+        args.putString("title", title);
         fragment.setArguments(args);
         return fragment;
 
@@ -59,11 +60,11 @@ public class StepFragment extends Fragment implements StepAdapter.ItemClickListe
 
     @Override
     public void onItemClickListener(int itemId) {
-        Step step = mSteps.get(itemId);
 
-        Log.i("TAG 2 ", "INSIDE CLICK");
+        Step step = mSteps.get(itemId);
         Intent i = new Intent(getActivity(), StepActivity.class);
         i.putExtra(getResources().getString(R.string.stepKey), step);
+        i.putExtra("title", mTitle);
         startActivity(i);
     }
 }

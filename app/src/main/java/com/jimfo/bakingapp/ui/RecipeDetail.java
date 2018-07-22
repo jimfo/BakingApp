@@ -18,21 +18,16 @@ import com.jimfo.bakingapp.R;
 import com.jimfo.bakingapp.adapter.DetailPagerAdapter;
 import com.jimfo.bakingapp.fragment.IngredientFragment;
 import com.jimfo.bakingapp.fragment.StepFragment;
-import com.jimfo.bakingapp.model.Ingredient;
 import com.jimfo.bakingapp.model.Recipe;
-import com.jimfo.bakingapp.model.Step;
-
-import java.util.ArrayList;
 
 public class RecipeDetail extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private ArrayList<Ingredient> mIngredients;
-    private ArrayList<Step> mSteps;
+    private Recipe mRecipe;
     private IngredientFragment iFragment = new IngredientFragment();
     private StepFragment sFragment = new StepFragment();
-
+    private String mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +56,11 @@ public class RecipeDetail extends AppCompatActivity implements TabLayout.OnTabSe
         Bundle extras = i.getExtras();
 
         if (extras != null && extras.containsKey(this.getResources().getString(R.string.selected))) {
-            Recipe recipe = extras.getParcelable(this.getResources().getString(R.string.selected));
+            mRecipe = extras.getParcelable(this.getResources().getString(R.string.selected));
 
-            if (recipe != null) {
-                mIngredients = new ArrayList<>(recipe.getmIngredients());
-                mSteps = new ArrayList<>(recipe.getmSteps());
-                setTitle(recipe.getmName());
-                setTitleColor(getResources().getColor(R.color.textColor));
+            if (mRecipe != null) {
+                mTitle = mRecipe.getmName();
+                setTitle(mTitle);
             }
         }
 
@@ -81,7 +74,7 @@ public class RecipeDetail extends AppCompatActivity implements TabLayout.OnTabSe
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setupWithViewPager(viewPager);
         DetailPagerAdapter pagerAdapter =
-                new DetailPagerAdapter(this.getSupportFragmentManager(), mIngredients, mSteps);
+                new DetailPagerAdapter(this.getSupportFragmentManager(), mRecipe, mTitle);
         pagerAdapter.addFragment(iFragment);
         pagerAdapter.addFragment(sFragment);
         viewPager.setAdapter(pagerAdapter);

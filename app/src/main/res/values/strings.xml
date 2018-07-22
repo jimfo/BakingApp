@@ -31,4 +31,5 @@
     <string name="stepKey">steps</string>
     <string name="ingredientLabel">Recipe Ingredients</string>
     <string name="recipeIntro">Recipe Introduction</string>
+    <string name="recipeNameKey">recipeNameKey</string>
 </resources>

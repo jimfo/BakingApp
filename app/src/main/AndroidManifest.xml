@@ -21,9 +21,11 @@
         </activity>
         <activity
             android:name=".ui.RecipeDetail"
+            android:launchMode="singleTop"
             android:parentActivityName=".ui.MainActivity">
         </activity>
-        <activity android:name=".ui.StepActivity">
+        <activity android:name=".ui.StepActivity"
+                  android:parentActivityName=".ui.RecipeDetail">
         </activity>
     </application>
 
