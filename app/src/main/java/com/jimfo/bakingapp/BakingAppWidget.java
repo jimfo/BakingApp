@@ -35,8 +35,14 @@ public class BakingAppWidget extends AppWidgetProvider {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         views.setOnClickPendingIntent(R.id.appwidget_ll, pendingIntent);
 
+        String str = "";
+
         if (mIngredients != null) {
-            views.setTextViewText(R.id.appwidget_text, mIngredients.get(0).getmIngredient());
+            for (Ingredient ingredient : mIngredients) {
+                str += ingredient.getmQuantity() + " " + ingredient.getmMeasure() + " " + ingredient.getmIngredient() + "\n";
+            }
+
+            views.setTextViewText(R.id.appwidget_text, str);
         }
 
         // Instruct the widget manager to update the widget

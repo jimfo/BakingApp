@@ -19,7 +19,7 @@ public class SharedPreference {
         super();
     }
 
-    public void saveIngredients(Context context, ArrayList<Ingredient> ingredients) {
+    public void saveIngredients(Context context, List<Ingredient> ingredients) {
 
         SharedPreferences settings;
         SharedPreferences.Editor editor;
