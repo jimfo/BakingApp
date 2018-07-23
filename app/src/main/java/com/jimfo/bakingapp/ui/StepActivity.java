@@ -62,7 +62,7 @@ public class StepActivity extends AppCompatActivity implements ExoPlayer.EventLi
             Step step = extras.getParcelable(this.getResources().getString(R.string.stepKey));
             if (step != null) {
                 stepDescription.append(step.getmDescription());
-                String title = extras.getString("title");
+                String title = extras.getString(getResources().getString(R.string.titleKey));
                 subTitle = step.getmShortDescription();
                 setTitle(title);
 
@@ -156,7 +156,7 @@ public class StepActivity extends AppCompatActivity implements ExoPlayer.EventLi
             mExoPlayer.addListener(this);
 
             // Prepare the MediaSource.
-            String userAgent = Util.getUserAgent(this, "ClassicalMusicQuiz");
+            String userAgent = Util.getUserAgent(this, "BakingApp");
             MediaSource mediaSource = new ExtractorMediaSource(mediaUri, new DefaultDataSourceFactory(
                     this, userAgent), new DefaultExtractorsFactory(), null, null);
             mExoPlayer.prepare(mediaSource);

@@ -9,4 +9,5 @@
     <dimen name="recipe_title">40dp</dimen>
     <dimen name="serving_height">30dp</dimen>
     <dimen name="main_view_space">4dp</dimen>
+    <dimen name="widget_margin">8dp</dimen>
 </resources>

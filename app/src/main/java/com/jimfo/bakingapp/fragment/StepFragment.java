@@ -28,8 +28,8 @@ public class StepFragment extends Fragment implements StepAdapter.ItemClickListe
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            mSteps = getArguments().getParcelableArrayList("steps");
-            mTitle = getArguments().getString("title");
+            mSteps = getArguments().getParcelableArrayList(getResources().getString(R.string.stepKey));
+            mTitle = getArguments().getString(getResources().getString(R.string.titleKey));
         }
     }
 
@@ -64,7 +64,7 @@ public class StepFragment extends Fragment implements StepAdapter.ItemClickListe
         Step step = mSteps.get(itemId);
         Intent i = new Intent(getActivity(), StepActivity.class);
         i.putExtra(getResources().getString(R.string.stepKey), step);
-        i.putExtra("title", mTitle);
+        i.putExtra(getResources().getString(R.string.titleKey), mTitle);
         startActivity(i);
     }
 }

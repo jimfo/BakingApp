@@ -32,4 +32,7 @@
     <string name="ingredientLabel">Recipe Ingredients</string>
     <string name="recipeIntro">Recipe Introduction</string>
     <string name="recipeNameKey">recipeNameKey</string>
+    <string name="titleKey">title</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

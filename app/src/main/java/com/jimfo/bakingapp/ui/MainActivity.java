@@ -14,6 +14,7 @@ import android.view.WindowManager;
 
 import com.jimfo.bakingapp.R;
 import com.jimfo.bakingapp.RecipeTask;
+import com.jimfo.bakingapp.SharedPreference;
 import com.jimfo.bakingapp.adapter.RecipeListAdapter;
 import com.jimfo.bakingapp.model.Recipe;
 
@@ -71,5 +72,12 @@ public class MainActivity extends AppCompatActivity implements RecipeTask.PostEx
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
+        saveToSharedPreferences();
+    }
+
+    private void saveToSharedPreferences() {
+
+        SharedPreference sharedPreference = new SharedPreference();
+        sharedPreference.saveIngredients(this, new ArrayList<>(mRecipes.get(0).getmIngredients()));
     }
 }
