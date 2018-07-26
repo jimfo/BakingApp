@@ -10,6 +10,7 @@ import android.widget.RemoteViews;
 
 import com.jimfo.bakingapp.model.Ingredient;
 import com.jimfo.bakingapp.ui.MainActivity;
+import com.jimfo.bakingapp.ui.RecipeDetail;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,7 @@ public class BakingAppWidget extends AppWidgetProvider {
         int width = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
 
         SharedPreference sharedPreference = new SharedPreference();
-        ArrayList<Ingredient> mIngredients = new ArrayList<>();
+        ArrayList<Ingredient> mIngredients;
         mIngredients = sharedPreference.getIngredients(context);
 
         // Construct the RemoteViews object
@@ -55,6 +56,21 @@ public class BakingAppWidget extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
+    }
+
+    private static RemoteViews getBakingAppRemoteView(Context context) {
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baking_app_widget);
+
+        Intent intent = new Intent(context, RecipeDetail.class);
+        views.setRemoteAdapter(R.id.appwidget_text, intent);
+
+        // Set the PlantDetailActivity intent to launch when clicked
+        Intent appIntent = new Intent(context, RecipeDetail.class);
+        PendingIntent appPendingIntent = PendingIntent.getActivity(context, 0, appIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        views.setPendingIntentTemplate(R.id.appwidget_text, appPendingIntent);
+        // Handle empty gardens
+        views.setEmptyView(R.id.appwidget_ll, R.id.appwidget_text);
+        return views;
     }
 
     @Override
