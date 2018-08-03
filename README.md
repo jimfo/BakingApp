@@ -4,4 +4,5 @@
 
 Udacity Baking App Project
 
-This is just a practice project. I made this to practice tab layout.
+I made this to practice tab layout. I may, in the future, update this project to fulfill the Udacity specifications.
+My official submission is : [Baking_App](https://github.com/jimfo/Baking_App)
