@@ -32,4 +32,6 @@
     <string name="ingredientLabel">Recipe Ingredients</string>
     <string name="recipeIntro">Recipe Introduction</string>
     <string name="recipeNameKey">recipeNameKey</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="titleKey">title</string>
 </resources>
