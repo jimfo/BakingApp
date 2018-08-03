@@ -6,17 +6,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.jimfo.bakingapp.fragment.IngredientFragment;
 import com.jimfo.bakingapp.fragment.StepFragment;
-import com.jimfo.bakingapp.model.Ingredient;
 import com.jimfo.bakingapp.model.Recipe;
-import com.jimfo.bakingapp.model.Step;
 
 import java.util.ArrayList;
 
 public class DetailPagerAdapter extends FragmentPagerAdapter {
 
     private ArrayList<Fragment> fragments = new ArrayList<>();
-    private ArrayList<Ingredient> mIngredients;
-    private ArrayList<Step> mSteps;
     private Recipe mRecipe;
     private String mTitle;
 

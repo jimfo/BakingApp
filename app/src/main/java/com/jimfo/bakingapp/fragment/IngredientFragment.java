@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jimfo.bakingapp.R;
+import com.jimfo.bakingapp.SharedPreference;
 import com.jimfo.bakingapp.adapter.IngredientAdapter;
 import com.jimfo.bakingapp.model.Ingredient;
 
@@ -21,13 +22,32 @@ import java.util.ArrayList;
 public class IngredientFragment extends Fragment {
 
     private ArrayList<Ingredient> mIngredients = new ArrayList<>();
+    private SharedPreference sharedPreference;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        sharedPreference = new SharedPreference();
+        sharedPreference.removeIngredients(getActivity());
+
         if (getArguments() != null) {
             mIngredients = getArguments().getParcelableArrayList(getResources().getString(R.string.ingredientKey));
+            sharedPreference.saveIngredients(getActivity(), mIngredients);
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        sharedPreference.removeIngredients(getActivity());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        sharedPreference.saveIngredients(getActivity(), mIngredients);
     }
 
     @Nullable
